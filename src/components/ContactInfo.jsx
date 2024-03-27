@@ -15,11 +15,11 @@ export default function ContactInfo() {
   //Use state for if the form is being edited:
   const [active, setActive] = useState(true);
 
-  const changeHandler = (e) => {
+  const inputHandler = (e) => {
     setContactInfo({ ...contactInfo, [e.target.id]: e.target.value });
   };
 
-  const submitHandler = (e) => {
+  const buttonHandler = (e) => {
     e.preventDefault();
     setActive(!active);
   };
@@ -34,7 +34,7 @@ export default function ContactInfo() {
               name="name"
               id="name"
               value={contactInfo.name}
-              onChange={changeHandler}
+              onChange={inputHandler}
             ></InputSection>
 
             <InputSection
@@ -42,7 +42,7 @@ export default function ContactInfo() {
               name="email"
               id="email"
               value={contactInfo.email}
-              onChange={changeHandler}
+              onChange={inputHandler}
             ></InputSection>
 
             <InputSection
@@ -50,7 +50,7 @@ export default function ContactInfo() {
               name="website"
               id="website"
               value={contactInfo.website}
-              onChange={changeHandler}
+              onChange={inputHandler}
             ></InputSection>
 
             <InputSection
@@ -58,11 +58,11 @@ export default function ContactInfo() {
               name="location"
               id="location"
               value={contactInfo.location}
-              onChange={changeHandler}
+              onChange={inputHandler}
             ></InputSection>
             <Button
               onClick={(e) => {
-                submitHandler(e);
+                buttonHandler(e);
               }}
             >
               Submit
@@ -76,7 +76,7 @@ export default function ContactInfo() {
             {contactInfo.location !== "" && <div>{contactInfo.location}</div>}
             <Button
               onClick={(e) => {
-                submitHandler(e);
+                buttonHandler(e);
               }}
             >
               Edit
