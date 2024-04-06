@@ -24,7 +24,7 @@ export function ContactSection({ contactInfo }) {
 export function WorkSection({ work }) {
   return (
     <div className="work-section">
-      <h3>Work Experience</h3>
+      <h4>Work Experience</h4>
 
       {work &&
         work.map((item) => {
@@ -51,21 +51,24 @@ export function WorkSection({ work }) {
 export function EducationSection({ education }) {
   return (
     <div className="education-section">
-      <h3>Education</h3>
+      <h4>Education</h4>
 
       {education &&
         education.map((item) => {
           return (
-            <li key={item.id}>
-              <div>
-                <p>{item.degree}</p>
-                <p>{item.school}</p>
+            <div key={item.id}>
+              <div className="education-section-one">
+                <div>
+                  <p>{item.degree},</p>
+                  <p> {item.school} </p>
+                </div>
+                <p>{`${item.gradMonth}/${item.gradYear}`}</p>
               </div>
-              <div>
-                <p>{item.gradMonth}</p>
-                <p>{item.gradYear}</p>
+
+              <div className="education-section-two">
+                <li>{item.details}</li>
               </div>
-            </li>
+            </div>
           );
         })}
     </div>
@@ -75,18 +78,18 @@ export function EducationSection({ education }) {
 export function SkillsSection({ skills }) {
   return (
     <div className="skills-section">
-      <h3>Skills</h3>
+      <h4>Skills</h4>
 
-      {skills &&
-        skills.map((item) => {
-          return (
-            <li key={item.id}>
-              <div>
-                <p>{item.name}</p>
-              </div>
-            </li>
-          );
-        })}
+      <ul className="skill-list">
+        {skills &&
+          skills.map((item) => {
+            return (
+              <li key={item.id} className="skill">
+                {item.name}
+              </li>
+            );
+          })}
+      </ul>
     </div>
   );
 }
