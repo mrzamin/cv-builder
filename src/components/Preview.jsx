@@ -29,16 +29,19 @@ export function WorkSection({ work }) {
       {work &&
         work.map((item) => {
           return (
-            <li key={item.id}>
-              <div>
-                <p>{item.startYear}</p>
-                <p>{item.startMonth}</p>
+            <div key={item.id}>
+              <div className="work-section-one">
+                <div>
+                  <p>{item.title},</p>
+                  <p> {item.employer} </p>
+                </div>
+                <p>{`${item.startMonth}/${item.startYear} - ${item.endMonth}/${item.endYear}`}</p>
               </div>
-              <div>
-                <p>{item.title}</p>
-                <p>{item.employer}</p>
+
+              <div className="work-section-two">
+                <li>{item.responsibilities}</li>
               </div>
-            </li>
+            </div>
           );
         })}
     </div>

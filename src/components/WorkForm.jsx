@@ -4,7 +4,7 @@ import InputSection from "./InputSection";
 const initialState = {
   title: "",
   employer: "",
-  description: "",
+  responsibilities: "",
   startMonth: "",
   startYear: "",
   endMonth: "",
@@ -101,21 +101,30 @@ export function WorkForm({ work, setWork }) {
             handleInput(e);
           }}
         ></InputSection>
+        <InputSection
+          type="text"
+          name="responsibilities"
+          id="responsibilities"
+          value={experience.responsibilities}
+          onChange={(e) => {
+            handleInput(e);
+          }}
+        ></InputSection>
         <button onClick={(e) => handleSubmit(e)}>Add</button>
       </div>
 
       <ul>
         {work &&
           work.map((experience) => (
-            <li key={experience.id}>
-              {experience.title}
+            <div key={experience.id}>
+              {experience.title}, {experience.employer}
               <span className="buttons">
                 <button onClick={(e) => handleEdit(e, experience)}>Edit</button>
                 <button onClick={(e) => handleDelete(e, experience.id)}>
                   Delete
                 </button>
               </span>
-            </li>
+            </div>
           ))}
       </ul>
     </>
