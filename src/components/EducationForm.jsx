@@ -6,6 +6,7 @@ const initialState = {
   school: "",
   gradMonth: "",
   gradYear: "",
+  details: "",
 };
 
 export function EducationForm({ education, setEducation }) {
@@ -38,10 +39,11 @@ export function EducationForm({ education, setEducation }) {
 
   return (
     <>
-      <div>
+      <div className="form-container">
         <InputSection
           type="text"
           name="degree"
+          label="Degree"
           id="degree"
           value={experience.degree}
           onChange={(e) => handleInput(e)}
@@ -50,41 +52,47 @@ export function EducationForm({ education, setEducation }) {
         <InputSection
           type="text"
           name="school"
+          label="School"
           id="school"
           value={experience.school}
           onChange={(e) => handleInput(e)}
         ></InputSection>
 
         <InputSection
-          type="number"
-          name="gradMonth"
-          id="gradMonth"
-          value={experience.gradMonth}
+          type="month"
+          name="graduationDate"
+          label="Graduation"
+          id="graduationDate"
+          value={experience.graduationDate}
           onChange={(e) => handleInput(e)}
         ></InputSection>
 
         <InputSection
-          type="number"
-          name="gradYear"
-          id="gradYear"
-          value={experience.gradYear}
+          type="text"
+          name="details"
+          label="Details"
+          id="details"
+          value={experience.details}
           onChange={(e) => handleInput(e)}
         ></InputSection>
         <button onClick={(e) => handleSubmit(e)}>Add</button>
       </div>
 
-      <ul>
+      <ul className="education-experience-list">
         {education &&
           education.map((experience) => (
-            <li key={experience.id}>
-              {experience.degree}
+            <div key={experience.id} className="education-experience">
+              <div>
+                {" "}
+                {experience.degree}, {experience.school}
+              </div>
               <span className="buttons">
                 <button onClick={(e) => handleEdit(e, experience)}>Edit</button>
                 <button onClick={(e) => handleDelete(e, experience.id)}>
                   Delete
                 </button>
               </span>
-            </li>
+            </div>
           ))}
       </ul>
     </>

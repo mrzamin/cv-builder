@@ -1,20 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 
 * {
   padding: 0px;
   margin: 0px;
 }
 
-.alegreya-sans sc-regular {
-  font-family: "Alegreya Sans SC", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
 body {
-  font-family: "Alegreya Sans SC", sans-serif;
-  font-weight: 400;
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 300;
   font-style: normal;
+
   box-sizing: border-box;
 
   --amber-50: #fffbeb;
@@ -70,11 +66,10 @@ footer {
 /*App container styles. */
 
 .app-container {
-  padding: 1rem;
+  padding: 3rem 1rem;
   display: flex;
-  border: 1px solid green;
-  gap: 1rem;
   flex-wrap: wrap;
+  gap: 2rem;
   justify-content: center;
 }
 
@@ -84,36 +79,71 @@ footer {
   border: 1px solid black;
   background-color: white;
   flex-basis: 50%;
-  height: 800px;
-
   padding: 1rem;
+}
+
+.preview,
+.form-section {
+  height: 800px;
 }
 
 .margin {
   border: 1px solid blue;
 }
 
+/* Scrollbar styles. */
+
+.form-section::-webkit-scrollbar {
+  width: 10px;
+}
+
+.form-section::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: white;
+}
+
+/* Form section 1/2 page. */
 .form-section {
   padding: 1rem;
-  background-color: aquamarine;
-  border: 1px solid green;
   flex-basis: 30%;
-
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-
+  overflow-y: scroll;
+  gap: 2rem;
   background-color: var(--transparent);
 }
 
-.panel {
-  border: 1px solid blue;
+/* Contact, work, skills, and education form containers. */
+
+.form-container {
+  border: 1px solid var(--slate-300);
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 350px;
+  padding: 1.5rem;
+  border-radius: 5px;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.panel {
+  border-bottom: 1px solid white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
+  align-items: start;
 }
 
 /* Contact info styles.*/
+
+.contact-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
 
 .preview .contact-info {
   display: flex;
@@ -127,15 +157,22 @@ footer {
   font-weight: bold;
   text-transform: uppercase;
 }
-/* Section heading styles.*/
-h3 {
+/* Resume Preview Section heading styles.*/
+h4 {
   border-bottom: 1px solid black;
+  padding-bottom: 2px;
+  margin-bottom: 0.5rem;
 }
 
-/*Work section. */
+/*Resume Preview Work section. */
+
+.work-section {
+  margin-bottom: 1rem;
+}
 .work-section-one {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
 
 .work-section-one div {
@@ -156,6 +193,29 @@ p:nth-child(1) {
   grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
 }
 
+/* Skills section. */
+.skills-section {
+  margin-bottom: 1rem;
+}
+
+.skill-item {
+  color: var(--amber-100);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.buttons {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.skill-form-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
 /* Education section styles. */
 .education-section-one {
   display: flex;
@@ -166,35 +226,62 @@ p:nth-child(1) {
   display: flex;
 }
 
-/*Work form styles. */
-
-.work-form {
-  padding: 1rem;
-  border: 1px solid var(--amber-100);
-  border-radius: 10px;
-}
-
-.work-form input {
-  background-color: var(--amber-100);
-  outline: none;
-  border: 1px solid var(--slate-500);
-}
-
 /*Input section styles. */
 .input-section {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+}
+
+input,
+textarea {
+  /* flex: 1; */
+  font-size: 0.8rem;
+  outline: none;
+  border: none;
+  color: var(--amber-600);
 }
 
 button {
   background-color: var(--amber-600);
   border: none;
   color: white;
-  padding: 0.3rem 1rem 0.3rem 1rem;
+  padding: 0.3rem 0.5rem;
   font-weight: bold;
+}
+
+button .show {
 }
 
 button:focus,
 button:hover {
   background-color: var(--amber-500);
+}
+
+input:focus,
+input:hover,
+textarea:focus,
+textarea:hover {
+  background-color: var(--amber-100);
+}
+
+img {
+  width: 20px;
+  -webkit-filter: invert(100%);
+}
+/* Work form styles. */
+.work-experience,
+.education-experience {
+  display: flex;
+  justify-content: space-between;
+}
+
+.work-experience span {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.work-experience-list,
+.education-experience-list {
+  display: grid;
+  gap: 0.5rem;
 }

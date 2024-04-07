@@ -1,3 +1,3 @@
-export default function Button({ children, onClick }) {
+export default function Button({ children }) {
   return <button>{children}</button>;
 }

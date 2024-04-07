@@ -1,6 +1,8 @@
 import { useState } from "react";
 import InputSection from "./InputSection";
+import editIcon from "/home/rosariomj/repos/cv-builder/src/assets/edit.svg";
 
+import trashIcon from "/home/rosariomj/repos/cv-builder/src/assets/delete.svg";
 const initialState = {
   name: "",
 };
@@ -35,10 +37,11 @@ export function SkillsForm({ skills, setSkills }) {
 
   return (
     <>
-      <div>
+      <div className="form-container">
         <InputSection
           type="text"
           name="skill"
+          label="Skill"
           id="skill"
           value={skill.name}
           onChange={(e) => handleInput(e)}
@@ -46,18 +49,20 @@ export function SkillsForm({ skills, setSkills }) {
         <button onClick={(e) => handleSubmit(e)}>Add</button>
       </div>
 
-      <ul>
+      <ul className="skill-form-list">
         {skills &&
           skills.map((skill) => (
-            <li key={skill.id}>
-              {skill.name}
+            <div key={skill.id} className="skill-item">
+              <div>{skill.name}</div>
               <span className="buttons">
-                <button onClick={(e) => handleEdit(e, skill)}>Edit</button>
+                <button onClick={(e) => handleEdit(e, skill)}>
+                  <img src={editIcon} alt="edit"></img>
+                </button>
                 <button onClick={(e) => handleDelete(e, skill.id)}>
-                  Delete
+                  <img src={trashIcon} alt="delete"></img>
                 </button>
               </span>
-            </li>
+            </div>
           ))}
       </ul>
     </>

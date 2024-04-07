@@ -4,57 +4,61 @@ import InputSection from "./InputSection";
 export default function ContactForm({ contactInfo, setContactInfo }) {
   const [active, setActive] = useState(true);
 
-  const inputHandler = (e) => {
+  const handleInput = (e) => {
     setContactInfo({ ...contactInfo, [e.target.id]: e.target.value });
   };
 
-  const buttonHandler = (e) => {
+  const handleButtonClick = () => {
     setActive(!active);
   };
 
   return (
     <>
       {active ? (
-        <>
+        <div className="form-container">
           <InputSection
             type="text"
             name="name"
+            label="Name"
             id="name"
             value={contactInfo.name}
-            onChange={inputHandler}
+            onChange={handleInput}
           ></InputSection>
 
           <InputSection
             type="email"
             name="email"
+            label="Email"
             id="email"
             value={contactInfo.email}
-            onChange={inputHandler}
+            onChange={handleInput}
           ></InputSection>
 
           <InputSection
             type="url"
             name="website"
+            label="Website"
             id="website"
             value={contactInfo.website}
-            onChange={inputHandler}
+            onChange={handleInput}
           ></InputSection>
 
           <InputSection
             type="text"
             name="location"
+            label="Location"
             id="location"
             value={contactInfo.location}
-            onChange={inputHandler}
+            onChange={handleInput}
           ></InputSection>
           <button
-            onClick={(e) => {
-              buttonHandler(e);
+            onClick={() => {
+              handleButtonClick();
             }}
           >
             Submit
           </button>
-        </>
+        </div>
       ) : (
         <>
           {contactInfo.name !== "" && <div>{contactInfo.name}</div>}
@@ -62,8 +66,8 @@ export default function ContactForm({ contactInfo, setContactInfo }) {
           {contactInfo.website !== "" && <div>{contactInfo.website}</div>}
           {contactInfo.location !== "" && <div>{contactInfo.location}</div>}
           <button
-            onClick={(e) => {
-              buttonHandler(e);
+            onClick={() => {
+              handleButtonClick();
             }}
           >
             Edit

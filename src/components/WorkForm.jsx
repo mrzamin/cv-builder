@@ -5,10 +5,8 @@ const initialState = {
   title: "",
   employer: "",
   responsibilities: "",
-  startMonth: "",
-  startYear: "",
-  endMonth: "",
-  endYear: "",
+  start: "",
+  end: "",
 };
 
 export function WorkForm({ work, setWork }) {
@@ -41,10 +39,11 @@ export function WorkForm({ work, setWork }) {
 
   return (
     <>
-      <div>
+      <div className="form-container work">
         <InputSection
           type="text"
           name="title"
+          label="Title"
           id="title"
           value={experience.title}
           onChange={(e) => {
@@ -55,6 +54,7 @@ export function WorkForm({ work, setWork }) {
         <InputSection
           type="text"
           name="employer"
+          label="Employer"
           id="employer"
           value={experience.employer}
           onChange={(e) => {
@@ -63,61 +63,49 @@ export function WorkForm({ work, setWork }) {
         ></InputSection>
 
         <InputSection
-          type="number"
-          name="startMonth"
-          id="startMonth"
-          value={experience.startMonth}
+          type="month"
+          name="start"
+          id="start"
+          label="Start"
+          value={experience.start}
           onChange={(e) => {
             handleInput(e);
           }}
         ></InputSection>
 
         <InputSection
-          type="number"
-          name="startYear"
-          id="startYear"
-          value={experience.startYear}
+          type="month"
+          name="end"
+          label="End"
+          id="end"
+          value={experience.end}
           onChange={(e) => {
             handleInput(e);
           }}
         ></InputSection>
 
-        <InputSection
-          type="number"
-          name="endMonth"
-          id="endMonth"
-          value={experience.endMonth}
-          onChange={(e) => {
-            handleInput(e);
-          }}
-        ></InputSection>
-
-        <InputSection
-          type="number"
-          name="endYear"
-          id="endYear"
-          value={experience.endYear}
-          onChange={(e) => {
-            handleInput(e);
-          }}
-        ></InputSection>
-        <InputSection
+        <label htmlFor="responsibilities">Responsibilities:</label>
+        <textarea
           type="text"
           name="responsibilities"
           id="responsibilities"
+          rows="3"
           value={experience.responsibilities}
           onChange={(e) => {
             handleInput(e);
           }}
-        ></InputSection>
+        ></textarea>
         <button onClick={(e) => handleSubmit(e)}>Add</button>
       </div>
 
-      <ul>
+      <ul className="work-experience-list">
         {work &&
           work.map((experience) => (
-            <div key={experience.id}>
-              {experience.title}, {experience.employer}
+            <div key={experience.id} className="work-experience">
+              <div>
+                {" "}
+                {experience.title}, {experience.employer}
+              </div>
               <span className="buttons">
                 <button onClick={(e) => handleEdit(e, experience)}>Edit</button>
                 <button onClick={(e) => handleDelete(e, experience.id)}>

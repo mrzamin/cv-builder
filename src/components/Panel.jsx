@@ -5,7 +5,9 @@ export default function Panel({ title, isActive, onShow, children }) {
       {isActive ? (
         <div>{children}</div>
       ) : (
-        <button onClick={onShow}>Show</button>
+        <button className="show" onClick={onShow}>
+          Show
+        </button>
       )}
     </div>
   );

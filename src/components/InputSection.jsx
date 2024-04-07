@@ -1,7 +1,8 @@
 export default function InputSection(props) {
   return (
     <div className="input-section">
-      <label htmlFor={props.id}>{`${props.name}:`} </label>
+      <label htmlFor={props.name}>{`${props.label}:`}</label>
+
       <input
         type={props.type}
         id={props.id}

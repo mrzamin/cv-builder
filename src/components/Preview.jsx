@@ -32,10 +32,10 @@ export function WorkSection({ work }) {
             <div key={item.id}>
               <div className="work-section-one">
                 <div>
-                  <p>{item.title},</p>
+                  <p>{item.title}, </p>
                   <p> {item.employer} </p>
                 </div>
-                <p>{`${item.startMonth}/${item.startYear} - ${item.endMonth}/${item.endYear}`}</p>
+                <p>{`${item.start} - ${item.end}`}</p>
               </div>
 
               <div className="work-section-two">
@@ -62,7 +62,7 @@ export function EducationSection({ education }) {
                   <p>{item.degree},</p>
                   <p> {item.school} </p>
                 </div>
-                <p>{`${item.gradMonth}/${item.gradYear}`}</p>
+                <p>{`${item.graduationDate}`}</p>
               </div>
 
               <div className="education-section-two">
