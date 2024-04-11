@@ -1,12 +1,11 @@
 import { useState } from "react";
-import "./styles/App.css";
+import "./styles/index.css";
 import Panel from "./components/Panel";
-
-import ContactForm from "./components/ContactForm";
-import { EducationForm } from "./components/EducationForm";
-import { WorkForm } from "./components/WorkForm";
-import { SkillsForm } from "./components/SkillsForm";
-
+import ContactForm from "./components/Form/ContactForm.jsx";
+import { EducationForm } from "./components/Form/EducationForm.jsx";
+import { WorkForm } from "./components/Form/WorkForm.jsx";
+import { SkillsForm } from "./components/Form/SkillsForm.jsx";
+import { resumeTemplate } from "./assets/resumeTemplate.js";
 import {
   Preview,
   ContactSection,
@@ -15,52 +14,11 @@ import {
   EducationSection,
 } from "./components/Preview";
 
-const initialContactInfo = {
-  name: "Marisa Minard",
-  email: "marisa@aatg.org",
-  website: "URL.com",
-  location: "Indianapolis",
-};
-
 function App() {
-  const [contactInfo, setContactInfo] = useState(initialContactInfo);
-
-  const [education, setEducation] = useState([
-    {
-      degree: "MBA",
-      school: "Harvard",
-      gradMonth: 10,
-      gradYear: 2024,
-
-      details:
-        "a set of words that is complete in itself, typically containing a subject and predicate, conveying a statement, question, exclamation, or command, and consisting of a main clause and sometimes one or more subordinate clauses.",
-    },
-  ]);
-
-  const [skills, setSkills] = useState([
-    { name: "JavaScript" },
-    { name: "CSS" },
-    { name: "HTML" },
-    { name: "React" },
-    { name: "Node" },
-    { name: "Next.js" },
-    { name: "Agile" },
-    { name: "Flexbox" },
-    { name: "Grid" },
-    { name: "Web dev" },
-  ]);
-
-  const [work, setWork] = useState([
-    {
-      title: "Director",
-      employer: "AATG",
-      start: "10/2024",
-      end: "10/2025",
-      responsibilities:
-        "a set of words that is complete in itself, typically containing a subject and predicate, conveying a statement, question, exclamation, or command, and consisting of a main clause and sometimes one or more subordinate clauses.",
-    },
-  ]);
-
+  const [contactInfo, setContactInfo] = useState(resumeTemplate[0]);
+  const [education, setEducation] = useState(resumeTemplate[1]);
+  const [skills, setSkills] = useState(resumeTemplate[3]);
+  const [work, setWork] = useState(resumeTemplate[2]);
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
