@@ -8,7 +8,8 @@ export default function ContactForm({ contactInfo, setContactInfo }) {
     setContactInfo({ ...contactInfo, [e.target.id]: e.target.value });
   };
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (e) => {
+    e.preventDefault();
     setActive(!active);
   };
 
@@ -32,6 +33,7 @@ export default function ContactForm({ contactInfo, setContactInfo }) {
             id="email"
             value={contactInfo.email}
             onChange={handleInput}
+            required={true}
           ></InputSection>
 
           <InputSection
@@ -52,27 +54,27 @@ export default function ContactForm({ contactInfo, setContactInfo }) {
             onChange={handleInput}
           ></InputSection>
           <button
-            onClick={() => {
-              handleButtonClick();
+            onClick={(e) => {
+              handleButtonClick(e);
             }}
           >
             Submit
           </button>
         </div>
       ) : (
-        <>
+        <div className="contact-form">
           {contactInfo.name !== "" && <div>{contactInfo.name}</div>}
           {contactInfo.email !== "" && <div>{contactInfo.email}</div>}
           {contactInfo.website !== "" && <div>{contactInfo.website}</div>}
           {contactInfo.location !== "" && <div>{contactInfo.location}</div>}
           <button
-            onClick={() => {
-              handleButtonClick();
+            onClick={(e) => {
+              handleButtonClick(e);
             }}
           >
             Edit
           </button>
-        </>
+        </div>
       )}
     </>
   );

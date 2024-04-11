@@ -1,12 +1,13 @@
 import { useState } from "react";
 import InputSection from "./InputSection";
+import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
   degree: "",
   school: "",
-  gradMonth: "",
-  gradYear: "",
+  graduationDate: "",
   details: "",
+  id: "",
 };
 
 export function EducationForm({ education, setEducation }) {
@@ -20,8 +21,7 @@ export function EducationForm({ education, setEducation }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const uniqueID = Date.now().toString();
-    experience.id = uniqueID;
+    experience.id = uuidv4();
     setEducation([...education, experience]);
     setExperience(initialState);
   }
@@ -39,7 +39,7 @@ export function EducationForm({ education, setEducation }) {
 
   return (
     <>
-      <div className="form-container">
+      <div className="form-container education-form">
         <InputSection
           type="text"
           name="degree"
@@ -58,23 +58,28 @@ export function EducationForm({ education, setEducation }) {
           onChange={(e) => handleInput(e)}
         ></InputSection>
 
-        <InputSection
+        <label htmlFor="graduationDate">Graduation Date:</label>
+        <input
           type="month"
           name="graduationDate"
           label="Graduation"
           id="graduationDate"
           value={experience.graduationDate}
           onChange={(e) => handleInput(e)}
-        ></InputSection>
+        ></input>
 
-        <InputSection
+        <label htmlFor="details">Details:</label>
+
+        <textarea
           type="text"
           name="details"
-          label="Details"
           id="details"
+          rows="3"
           value={experience.details}
-          onChange={(e) => handleInput(e)}
-        ></InputSection>
+          onChange={(e) => {
+            handleInput(e);
+          }}
+        ></textarea>
         <button onClick={(e) => handleSubmit(e)}>Add</button>
       </div>
 
@@ -83,7 +88,6 @@ export function EducationForm({ education, setEducation }) {
           education.map((experience) => (
             <div key={experience.id} className="education-experience">
               <div>
-                {" "}
                 {experience.degree}, {experience.school}
               </div>
               <span className="buttons">

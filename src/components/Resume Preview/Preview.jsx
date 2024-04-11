@@ -17,7 +17,7 @@ export function Preview({ children }) {
 export function ContactSection({ contactInfo }) {
   return (
     <div className="contact-info-section">
-      <div className="name">{contactInfo.name}</div>
+      <h3 className="name">{contactInfo.name}</h3>
       <div className="contact-info">
         <div>{contactInfo.email}</div>
         <div>|</div>
@@ -40,15 +40,16 @@ export function WorkSection({ work }) {
             <div key={item.id}>
               <div className="work-section-one">
                 <div>
-                  <p>{item.title}, </p>
-                  <p> {item.employer} </p>
+                  <p>
+                    <span>{item.title}</span>, {item.employer}
+                  </p>
                 </div>
                 <p>
                   {formatDate(item.start)} - {formatDate(item.end)}
                 </p>
               </div>
-              import import
-              <div className="work-section-two">
+
+              <div className="section-two">
                 <li>{item.responsibilities}</li>
               </div>
             </div>
@@ -69,13 +70,14 @@ export function EducationSection({ education }) {
             <div key={item.id}>
               <div className="education-section-one">
                 <div>
-                  <p>{item.degree},</p>
-                  <p> {item.school} </p>
+                  <p>
+                    <span>{item.degree}</span>, {item.school}
+                  </p>
                 </div>
-                <p>{`${item.graduationDate}`}</p>
+                <p>{formatDate(item.graduationDate)}</p>
               </div>
 
-              <div className="education-section-two">
+              <div className="section-two">
                 <li>{item.details}</li>
               </div>
             </div>
@@ -94,9 +96,9 @@ export function SkillsSection({ skills }) {
         {skills &&
           skills.map((item) => {
             return (
-              <li key={item.id} className="skill">
-                {item.name}
-              </li>
+              <div key={item.id} className="skill">
+                &bull; {item.name}
+              </div>
             );
           })}
       </ul>

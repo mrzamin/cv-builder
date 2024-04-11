@@ -1,8 +1,11 @@
 import { useState } from "react";
 import InputSection from "./InputSection";
-import editIcon from "/home/rosariomj/repos/cv-builder/src/assets/edit.svg";
+import editIcon from "../../public/icons/edit.svg";
 
-import trashIcon from "/home/rosariomj/repos/cv-builder/src/assets/delete.svg";
+import trashIcon from "../../public/icons/delete.svg";
+
+import { v4 as uuidv4 } from "uuid";
+
 const initialState = {
   name: "",
 };
@@ -18,7 +21,7 @@ export function SkillsForm({ skills, setSkills }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const uniqueID = Date.now().toString();
+    const uniqueID = uuidv4();
     skill.id = uniqueID;
     setSkills([...skills, skill]);
     setSkill(initialState);

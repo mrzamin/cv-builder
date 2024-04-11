@@ -9,6 +9,7 @@ export default function InputSection(props) {
         name={props.name}
         value={props.value}
         onChange={props.onChange}
+        required={true}
       />
     </div>
   );

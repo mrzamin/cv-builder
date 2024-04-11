@@ -1,5 +1,6 @@
 import { useState } from "react";
 import InputSection from "./InputSection";
+import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
   title: "",
@@ -20,7 +21,7 @@ export function WorkForm({ work, setWork }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const uniqueID = Date.now().toString();
+    const uniqueID = uuidv4();
     experience.id = uniqueID;
     setWork([...work, experience]);
     setExperience(initialState);
@@ -103,7 +104,6 @@ export function WorkForm({ work, setWork }) {
           work.map((experience) => (
             <div key={experience.id} className="work-experience">
               <div>
-                {" "}
                 {experience.title}, {experience.employer}
               </div>
               <span className="buttons">
