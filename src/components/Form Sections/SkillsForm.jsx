@@ -1,9 +1,7 @@
 import { useState } from "react";
 import InputSection from "./InputSection";
-import editIcon from "../../public/icons/edit.svg";
-
-import trashIcon from "../../public/icons/delete.svg";
-
+import editIcon from "/public/icons/edit.svg";
+import trashIcon from "/public/icons/delete.svg";
 import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
