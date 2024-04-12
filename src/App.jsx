@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./styles/index.css";
-import Panel from "./components/Panel";
-import ContactForm from "./components/Form/ContactForm.jsx";
-import { EducationForm } from "./components/Form/EducationForm.jsx";
-import { WorkForm } from "./components/Form/WorkForm.jsx";
-import { SkillsForm } from "./components/Form/SkillsForm.jsx";
+import Panel from "./components/Form Sections/Panel.jsx";
+import ContactForm from "./components/Form Sections/ContactForm.jsx";
+import { EducationForm } from "./components/Form Sections/EducationForm.jsx";
+import { WorkForm } from "./components/Form Sections/WorkForm.jsx";
+import { SkillsForm } from "./components/Form Sections/SkillsForm.jsx";
 import { resumeTemplate } from "./assets/resumeTemplate.js";
 import {
   Preview,
@@ -12,7 +12,7 @@ import {
   WorkSection,
   SkillsSection,
   EducationSection,
-} from "./components/Preview";
+} from "./components/Resume Preview/Preview.jsx";
 
 function App() {
   const [contactInfo, setContactInfo] = useState(resumeTemplate[0]);
