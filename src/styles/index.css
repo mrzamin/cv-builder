@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
 
+/* General app styles.*/
+
 * {
   padding: 0px;
   margin: 0px;
@@ -10,20 +12,14 @@ body {
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
-
   box-sizing: border-box;
 
-  --amber-50: #fffbeb;
   --amber-100: #fef3c7;
   --amber-500: #f59e0b;
   --amber-600: #d97706;
   --slate-300: #cbd5e1;
-  --slate-400: #94a3b8;
   --slate-500: #64748b;
-  --slate-600: #475569;
   --slate-700: #334155;
-  --slate-800: #1e293b;
-  --slate-900: #0f172a;
   --transparent: rgb(255, 255, 255, 0.2);
 
   height: 100%;
@@ -42,6 +38,14 @@ body {
   animation: gradient 30s ease infinite;
 }
 
+.app-container {
+  padding: 3rem 1rem 2rem 1rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -54,7 +58,7 @@ body {
   }
 }
 
-/*Header styles. */
+/*Header and footer.*/
 
 header,
 footer {
@@ -63,35 +67,7 @@ footer {
   text-align: center;
 }
 
-/*App container styles. */
-
-.app-container {
-  padding: 3rem 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
-}
-
-.preview {
-  font-family: serif;
-  color: black;
-  border: 1px solid black;
-  background-color: white;
-  flex-basis: 50%;
-  padding: 1rem;
-}
-
-.preview,
-.form-section {
-  height: 800px;
-}
-
-.margin {
-  border: 1px solid blue;
-}
-
-/* Scrollbar styles. */
+/* Scrollbar.*/
 
 .form-section::-webkit-scrollbar {
   width: 10px;
@@ -102,27 +78,30 @@ footer {
   background-color: white;
 }
 
-/* Form section 1/2 page. */
+/* Form section.*/
+
 .form-section {
+  width: 375px;
   padding: 1rem;
-  flex-basis: 30%;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  flex: 1;
   gap: 2rem;
   background-color: var(--transparent);
+  height: 800px;
 }
 
-/* Contact, work, skills, and education form containers. */
-
-.form-container {
+.form-container,
+.contact-form {
   border: 1px solid var(--slate-300);
   background-color: rgba(255, 255, 255, 0.1);
-  width: 350px;
+  width: 280px;
   padding: 1.5rem;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 0.5rem;
   margin-bottom: 0.8rem;
 }
@@ -132,11 +111,36 @@ footer {
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   gap: 1rem;
   align-items: start;
 }
 
-/* Contact info styles.*/
+/*Resume preview.*/
+
+.preview {
+  font-family: serif;
+  color: black;
+  background-color: white;
+  padding: 1rem 1.2rem;
+  flex-direction: column;
+  display: flex;
+  flex-basis: 50%;
+}
+
+.preview .name {
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h4 {
+  border-bottom: 1px solid black;
+  padding-bottom: 2px;
+  margin-bottom: 0.5rem;
+}
+
+/* Resume preview: contact info.*/
 
 .contact-info-section {
   display: flex;
@@ -152,48 +156,22 @@ footer {
   flex-wrap: wrap;
 }
 
-.preview .name {
-  text-align: center;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-/* Resume Preview Section heading styles.*/
-h4 {
-  border-bottom: 1px solid black;
-  padding-bottom: 2px;
-  margin-bottom: 0.5rem;
-}
-
-/*Resume Preview Work section. */
+/*Resume preview: work.*/
 
 .work-section {
   margin-bottom: 1rem;
-}
-.work-section-one {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
 }
 
 .work-section-one div {
   display: flex;
 }
 
-p:nth-child(1) {
+p:nth-child(1) span {
   font-weight: bold;
 }
 
-.preview .skill {
-  border: 1px solid red;
-  list-style-position: inside;
-}
+/* Resume preview: skills.*/
 
-.preview .skill-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
-}
-
-/* Skills section. */
 .skills-section {
   margin-bottom: 1rem;
 }
@@ -205,6 +183,13 @@ p:nth-child(1) {
   align-items: center;
 }
 
+.skill-list {
+  display: grid;
+  justify-items: center;
+  row-gap: 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+}
+
 .buttons {
   display: flex;
   gap: 0.2rem;
@@ -214,19 +199,18 @@ p:nth-child(1) {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem;
+  width: 340px;
+  font-size: 0.8rem;
 }
 
-/* Education section styles. */
-.education-section-one {
-  display: flex;
-  justify-content: space-between;
-}
+/* Resume preview: education.*/
 
 .education-section-one div {
   display: flex;
 }
 
-/*Input section styles. */
+/*Inputs. */
+
 .input-section {
   display: flex;
   justify-content: space-between;
@@ -234,27 +218,11 @@ p:nth-child(1) {
 
 input,
 textarea {
-  /* flex: 1; */
   font-size: 0.8rem;
   outline: none;
   border: none;
   color: var(--amber-600);
-}
-
-button {
-  background-color: var(--amber-600);
-  border: none;
-  color: white;
-  padding: 0.3rem 0.5rem;
-  font-weight: bold;
-}
-
-button .show {
-}
-
-button:focus,
-button:hover {
-  background-color: var(--amber-500);
+  width: 100%;
 }
 
 input:focus,
@@ -264,24 +232,92 @@ textarea:hover {
   background-color: var(--amber-100);
 }
 
+/* Buttons. */
+
+button {
+  background-color: var(--amber-600);
+  border: none;
+  color: white;
+  padding: 0.3rem 0.5rem;
+  font-weight: bold;
+}
+
+button:focus,
+button:hover {
+  background-color: var(--amber-500);
+}
+
+/* Images. */
+
 img {
-  width: 20px;
+  width: 15px;
   -webkit-filter: invert(100%);
 }
-/* Work form styles. */
+
+/*Shared styles. */
+
 .work-experience,
 .education-experience {
+  /* flex-grow: 1; */
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .work-experience span {
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .work-experience-list,
 .education-experience-list {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+
+  border: 1px solid black;
   gap: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.education-section-one,
+.work-section-one {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.section-two {
+  margin-bottom: 0.5rem;
+}
+
+/* Media queries. */
+
+@media only screen and (max-width: 1200px) {
+  .form-section {
+    width: 80vw;
+  }
+
+  .preview {
+    flex-basis: 80%;
+  }
+
+  .form-container,
+  input,
+  label,
+  .skill-form-list {
+    width: 52vw;
+  }
+
+  .input-section {
+    flex-direction: column;
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
 }
