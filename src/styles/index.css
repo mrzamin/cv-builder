@@ -258,7 +258,6 @@ img {
 
 .work-experience,
 .education-experience {
-  /* flex-grow: 1; */
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -276,8 +275,6 @@ img {
 .education-experience-list {
   display: flex;
   flex-wrap: wrap;
-
-  border: 1px solid black;
   gap: 0.5rem;
   font-size: 0.8rem;
 }
